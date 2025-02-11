@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets for AC Mactal on ICE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" ; rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        summary {
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQigDo-Km6g31PyG6C78mA4CEgc_1Q685mrkeHjdmiBOIzW33bQlJCwDYXeO3Gif7HvVQk&usqp=CAU);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            text-align: center;
+        }
+        h1 {
+            color:white ;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+        #bigbox {
+            background-color: white;
+            height: 1050px;
+            width: 1660px;
+            text-align: left;
+            margin-inline: 100px;
+            padding-top: 50px;
+            border:solid;
+            border-color:rgb(85, 85, 85);
+            border-radius: 5px;
+            border-width: 10px;
+        }
+        button {
+            border:solid;
+            border-radius: 4px;
+            background-color: rgb(107, 199, 230);
+            border-width: 2px;
+            width: 300px
+        }
+        #buttonprint {
+            width: 1300px
+        }
+        #chkprice {
+            background-color: rgb(135, 255, 135);
+            border-color: white
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h1>Ticketing Center</h1>
+
+    <div id="bigbox">
+    <div class="container" class="info">
+        <details>
+            <summary><strong> Personal Information :</strong></summary>
+            <i> Please fill out the form: </i>
+
+<br>
+<br>
+    <label for="name"><strong>Full Name :</strong></label><br>
+    <input type="text" id="name" placeholder="Type Here..." class="form-control"></input>
+
+<br>
+    <label for="email"><strong>Email :</strong></label><br>
+    <input type="text" id="email" placeholder="Type Here..." class="form-control"></input>
+<br>
+    <button type="button" onclick="recieved()">Submit Information</button> 
+        </details>
+    </div>
+
+
+<br><br>
+
+
+    <div class="container" class="price">
+        <details>
+            <summary><strong> Ticket Price :</strong></summary>
+            <i> Please fill out the form: </i>
+
+<br>
+<br>
+    <label for="seat"> <strong>Seat :</strong></label><br>
+
+        <select class="form-select" id="seatrow">
+            <option value="none"> Row</option>
+            <option value="0"> Row A </option>
+            <option value="0"> Row B </option>
+            <option value="0.1"> Row C </option>
+            <option value="0.1"> Row D </option>
+            <option value="0"> Row E </option>
+            <option value="0"> Row F </option>
+
+        </select>
+<br>
+        <select class="form-select" id="seatcol">
+            <option value="none"> Seat</option>
+            <option value="25"> Seat 1 </option>
+            <option value="25"> Seat 2 </option>
+            <option value="25"> Seat 3 </option>
+            <option value="50"> Seat 4 </option>
+            <option value="50"> Seat 5 </option>
+            <option value="50"> Seat 6 </option>
+            <option value="50"> Seat 7 </option>
+            <option value="50"> Seat 8 </option>
+            <option value="50"> Seat 9 </option>
+            <option value="25"> Seat 10 </option>
+            <option value="25"> Seat 11 </option>
+            <option value="25"> Seat 12 </option>
+        </select>
+
+<br>
+    <label for="disc"> <strong>Discount (If any) :</strong></label><br>
+    
+        <select class="form-select" id="disc">
+            <option value="none"> Select</option>
+            <option value="0.2"> PWD/SC/STUDENT </option>
+            <option value="0"> REGULAR </option>
+        </select>
+
+<br>
+            <button type="button" onmouseover="price()" id="chkprice">Hover to Check Price</button>
+            <br><br>
+            <p id="price"></p>
+            <br>
+            <button type="button" onclick="buy()">Buy Ticket</button>
+        </details>
+    </div>
+
+
+<br><br>
+
+
+<div class="container" class="price">
+    <details>
+        <summary><strong> Ticket Print: </strong></summary>
+        <i> You will be sent an Email of your Ticket: </i>
+
+<br><br>
+        <center><button type="button" onclick="printed()" id="buttonprint">Print Ticket</button></center>
+    </details>
+
+</div>
+
+<script>
+    function recieved() {
+        alert("Your information has been recieved!")
+    }
+    function printed() {
+        alert("You have been sent a copy of your ticket in your Email!")
+    }
+    function price() {
+        var st = document.getElementById('seatcol').value;
+        var row = document.getElementById('seatrow').value;
+        var dis = document.getElementById('disc').value;
+        var cost = Number(st) + (Number(st)*Number(row))
+        var final_cost = Number(cost) - (Number(cost)*Number(dis));
+
+        document.getElementById('price').innerHTML = final_cost;
+    }
+    function buy() {
+        var st = document.getElementById('seatcol').value;
+        var row = document.getElementById('seatrow').value;
+        var dis = document.getElementById('disc').value;
+        var cost = Number(st) + (Number(st)*Number(row))
+        var final_cost = Number(cost) - (Number(cost)*Number(dis));
+
+        alert("You have paid " + final_cost);
+    }
+</script>
+</div>
+</body>
+</html>
